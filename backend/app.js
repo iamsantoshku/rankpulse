@@ -18,7 +18,7 @@
 import express from "express";
 import cors from "cors";
 
-import userRoutes from "./routes/userRoutes.js";
+// import userRoutes from "./routes/userRoutes.js";
 import authRoutes from "./routes/auth.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import testRoutes from "./routes/test.routes.js";
@@ -42,7 +42,7 @@ app.use(express.json());
 
 // ✅ Routes
 
-app.use("/api/users", userRoutes); // user APIs
+// app.use("/api/users", userRoutes); // user APIs
 app.use("/api/auth", authRoutes); // authentication APIs
 app.use("/api/admin", adminRoutes);
 app.use("/api/test", testRoutes); // for test seres
