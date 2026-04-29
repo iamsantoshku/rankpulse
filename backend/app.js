@@ -30,9 +30,19 @@ import attemptRoutes from "./routes/attempt.routes.js";
 const app = express();
 
 // ✅ CORS (connect frontend)
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173", // React frontend URL    
+//     credentials: true
+//   })
+// );
+
 app.use(
   cors({
-    origin: "http://localhost:5173", // React frontend URL    
+    origin: [
+      "http://localhost:5173",
+      "https://rankpulse.onrender.com"
+    ],
     credentials: true
   })
 );
