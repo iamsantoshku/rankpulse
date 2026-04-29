@@ -1,58 +1,8 @@
-// import { useNavigate } from "react-router-dom";
-
-// const ExamCard = ({ exam }) => {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div
-//       onClick={() => navigate(`/exam/${exam.slug}`)}
-//       className="bg-white rounded-2xl shadow-md p-5 cursor-pointer hover:shadow-xl hover:scale-[1.03] transition duration-300 border"
-//     >
-      
-//       {/* Logo */}
-//       <div className="flex items-center gap-4">
-//         <img
-//           src={exam.logo || "https://via.placeholder.com/50"}
-//           alt={exam.title}
-//           className="w-12 h-12 object-contain rounded"
-//         />
-
-//         <div>
-//           <h3 className="font-semibold text-lg text-gray-800">
-//             {exam.title}
-//           </h3>
-
-//           {exam.isPopular && (
-//             <span className="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded">
-//               Popular
-//             </span>
-//           )}
-//         </div>
-//       </div>
-
-//       {/* Description */}
-//       <p className="text-sm text-gray-500 mt-3 line-clamp-2">
-//         {exam.description || "Explore mock tests, previous papers and more."}
-//       </p>
-
-//       {/* Footer */}
-//       <div className="mt-4 flex justify-between items-center">
-//         <span className="text-blue-600 text-sm font-medium">
-//           View Details →
-//         </span>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ExamCard;
-
-
 
 
 // import { useNavigate } from "react-router-dom";
 
-// const ExamCard = ({ exam }) => {
+// const ExamCard = ({ exam, mocks = 0, pyp = 0 }) => {
 //   const navigate = useNavigate();
 
 //   return (
@@ -74,8 +24,8 @@
 
 //       {/* Features */}
 //       <ul className="text-sm text-gray-600 mb-4 space-y-1 text-left inline-block">
-//         <li>• {exam.mockCount || 0} Full Mock Tests</li>
-//         <li>• {exam.pypCount || 0} Previous Year Papers</li>
+//         <li>• {mocks} Full Mock Tests</li>
+//         <li>• {pyp} Previous Year Papers</li>
 //       </ul>
 
 //       {/* Buttons */}
@@ -99,49 +49,96 @@
 
 
 
+
 import { useNavigate } from "react-router-dom";
+import { memo } from "react";
 
 const ExamCard = ({ exam, mocks = 0, pyp = 0 }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 p-6 text-center border">
+    <div
+      className="
+        group bg-white rounded-2xl border shadow-sm 
+        hover:shadow-xl transition-all duration-300
+        p-5 flex flex-col justify-between
+        hover:-translate-y-1
+      "
+    >
 
-      {/* Logo */}
-      <div className="flex justify-center mb-4">
-        <img
-          src={exam.logo || "https://via.placeholder.com/60"}
-          alt={exam.title}
-          className="w-14 h-14 object-contain"
-        />
+      {/* TOP SECTION */}
+      <div className="flex flex-col items-center text-center">
+
+        {/* LOGO */}
+        <div className="w-16 h-16 mb-3 flex items-center justify-center bg-gray-50 rounded-xl overflow-hidden">
+          <img
+            src={exam.logo || "https://via.placeholder.com/60"}
+            alt={exam.title}
+            loading="lazy"
+            onError={(e) => {
+              e.target.src = "https://via.placeholder.com/60";
+            }}
+            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+
+        {/* TITLE */}
+        <h3 className="text-base md:text-lg font-semibold text-gray-800 line-clamp-2">
+          {exam.title}
+        </h3>
+
+        {/* BADGE */}
+        <span className="mt-2 text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-medium">
+          {exam.title.split(" ")[0]}
+        </span>
       </div>
 
-      {/* Title */}
-      <h3 className="text-lg font-semibold text-gray-800 mb-3">
-        {exam.title}
-      </h3>
+      {/* STATS */}
+      <div className="mt-4 space-y-2 text-sm text-gray-600">
 
-      {/* Features */}
-      <ul className="text-sm text-gray-600 mb-4 space-y-1 text-left inline-block">
-        <li>• {mocks} Full Mock Tests</li>
-        <li>• {pyp} Previous Year Papers</li>
-      </ul>
+        <div className="flex justify-between items-center bg-gray-50 px-3 py-2 rounded-lg">
+          <span>Mock Tests</span>
+          <span className="font-semibold text-indigo-600">
+            {mocks}
+          </span>
+        </div>
 
-      {/* Buttons */}
-      <div className="flex justify-center gap-3 mt-3">
+        <div className="flex justify-between items-center bg-gray-50 px-3 py-2 rounded-lg">
+          <span>PYP Papers</span>
+          <span className="font-semibold text-blue-600">
+            {pyp}
+          </span>
+        </div>
+
+      </div>
+
+      {/* ACTIONS */}
+      <div className="mt-5 flex gap-2">
+
         <button
           onClick={() => navigate(`/exam/${exam.slug}`)}
-          className="bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-800"
+          className="
+            flex-1 bg-indigo-600 text-white text-sm py-2 rounded-lg
+            hover:bg-indigo-700 transition
+          "
         >
-          View All Tests
+          View Tests
         </button>
 
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600">
-          Buy Now
+        <button
+          className="
+            flex-1 bg-blue-500 text-white text-sm py-2 rounded-lg
+            hover:bg-blue-600 transition
+          "
+        >
+          Buy
         </button>
+
       </div>
+
     </div>
   );
 };
 
-export default ExamCard;
+// 🔥 Prevent unnecessary re-renders
+export default memo(ExamCard);
