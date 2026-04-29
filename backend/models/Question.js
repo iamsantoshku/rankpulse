@@ -1,57 +1,6 @@
 
 
 
-
-// import mongoose from "mongoose";
-
-// const questionSchema = new mongoose.Schema(
-//   {
-//     question: {
-//       type: String,
-//       required: true
-//     },
-
-//     options: [
-//       {
-//         text: String,
-//         isCorrect: Boolean
-//       }
-//     ],
-
-//     explanation: String,
-
-//     // 🔥 ONLY LINK TO TEST
-//     test: {
-//       type: mongoose.Schema.Types.ObjectId,
-//       ref: "Test",
-//       required: true
-//     },
-
-//     subject: String,
-
-//     difficulty: {
-//       type: String,
-//       enum: ["easy", "medium", "hard"]
-//     },
-
-//     marks: {
-//       type: Number,
-//       default: 1
-//     },
-
-//     negativeMarks: {
-//       type: Number,
-//       default: 0
-//     }
-//   },
-//   { timestamps: true }
-// );
-
-// export default mongoose.model("Question", questionSchema);
-
-
-
-
 import mongoose from "mongoose";
 
 const questionSchema = new mongoose.Schema(

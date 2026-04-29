@@ -1,16 +1,3 @@
-// import API from "../api/axios";
-
-// export const createExam = (data) =>
-//   API.post("/admin/exam", data);
-
-// export const getExams = () =>
-//   API.get("/admin/exam");
-
-// export const getPopularTests = () =>
-//   API.get("/admin/popular-exams");
-
-
-
 
 
 import API from "../api/axios";
@@ -105,25 +92,12 @@ export const getAttemptById = (id) =>
 
 
 
-// export const getExamStats = (slug) => {
-//    API.get(`/exams/${slug}/stats`);
-// };
+export const getAllUsers = () =>
+  API.get("/admin/users");
 
+export const getUserPerformance = (userId) =>
+  API.get(`/admin/users/${userId}`);
 
+export const getExamStats = () =>
+  API.get("/admin/stats/exams");
 
-// export const submitTest = (data) => {
-//   return axios.post(`${API}/attempts/submit`, data, {
-//     headers: {
-//       Authorization: `Bearer ${localStorage.getItem("token")}`
-//     }
-//   });
-// };
-
-// // 🔥 GET RESULT
-// export const getAttemptById = (id) => {
-//   return axios.get(`${API}/attempts/${id}`, {
-//     headers: {
-//       Authorization: `Bearer ${localStorage.getItem("token")}`
-//     }
-//   });
-// };

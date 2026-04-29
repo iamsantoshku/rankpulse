@@ -3,27 +3,6 @@
 
 import Test from "../models/Test.js";
 
-// export const createTest = async (req, res) => {
-//   try {
-//     const data = req.body;
-
-//     const test = await Test.create({
-//       ...data,
-//       testSeries: data.testSeries || null,
-//       pyp: data.pyp || null,
-//       totalQuestions: Number(data.totalQuestions),
-//       duration: Number(data.duration),
-//       price: data.isFree ? 0 : Number(data.price)
-//     });
-
-//     res.status(201).json(test);
-//   } catch (err) {
-//     console.error("❌ ERROR:", err.message);
-//     res.status(500).json({ message: err.message });
-//   }
-// };
-
-
 
 // controllers/testPaper.controller.js
 
@@ -31,14 +10,6 @@ import Test from "../models/Test.js";
 export const createTest = async (req, res) => {
   try {
     const data = req.body;
-
-    // const test = await Test.create({
-    //   ...data,
-    //   totalQuestions: Number(data.totalQuestions),
-    //   duration: Number(data.duration),
-    //   price: data.isFree ? 0 : Number(data.price)
-    // });
-
 
     const test = await Test.create({
   ...data,

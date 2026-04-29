@@ -1,5 +1,8 @@
 import Exam from "../models/Exam.js";
 import TestSeries from "../models/TestSeries.js";
+import User from "../models/userModels.js"
+// import Attempt from "../models/attempt.model.js";
+import TestAttempt from "../models/TestAttempt.js";
 
 
 import slugify from "slugify";
@@ -55,4 +58,58 @@ export const getPopularExams = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+};
+
+
+
+export const getAllUsers = async (req, res) => {
+  const users = await User.find().select("-password");
+  res.json(users);
+};
+
+
+
+// export const getUserPerformance = async (req, res) => {
+//   const { userId } = req.params;
+
+//   const attempts = await Attempt.find({ user: userId })
+//     .populate("test");
+
+//   res.json(attempts);
+// };
+
+
+
+export const getUserPerformance = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    console.log("👉 USER ID:", userId);
+
+    const attempts = await TestAttempt.find({ user: userId })
+      .populate("test")
+      .sort({ createdAt: -1 });
+
+    console.log("👉 ATTEMPTS:", attempts);
+
+    res.json(attempts);
+
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+
+export const getExamStats = async (req, res) => {
+  const stats = await Attempt.aggregate([
+    {
+      $group: {
+        _id: "$exam",
+        totalAttempts: { $sum: 1 },
+        avgScore: { $avg: "$score" }
+      }
+    }
+  ]);
+
+  res.json(stats);
 };
