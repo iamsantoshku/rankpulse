@@ -83,42 +83,83 @@ const PopularTests = () => {
     fetchTests();
   }, []);
 
+  // const fetchTests = async () => {
+  //   try {
+  //     const res = await getPopularTests();
+  //     setTests(res.data);
+
+  //     // 🔥 fetch counts for each exam
+  //     const countMap = {};
+
+  //     for (let exam of res.data) {
+  //       const slug = exam.slug;
+
+  //       // get all test series
+  //       const seriesRes = await getTestSeriesByExam(slug);
+
+  //       let totalMocks = 0;
+
+  //       for (let s of seriesRes.data) {
+  //         const tRes = await getTestsBySeries(s._id);
+  //         totalMocks += tRes.data.length;
+  //       }
+
+  //       // get PYP
+  //       const pypRes = await getPYPByExam(slug);
+
+  //       countMap[slug] = {
+  //         mocks: totalMocks,
+  //         pyp: pypRes.data.length,
+  //       };
+  //     }
+
+  //     setCounts(countMap);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+   
+
   const fetchTests = async () => {
-    try {
-      const res = await getPopularTests();
-      setTests(res.data);
+  try {
+    const res = await getPopularTests();
 
-      // 🔥 fetch counts for each exam
-      const countMap = {};
+    console.log("API RESPONSE:", res.data);
 
-      for (let exam of res.data) {
-        const slug = exam.slug;
+    const testArray = Array.isArray(res.data)
+      ? res.data
+      : res.data.data;
 
-        // get all test series
-        const seriesRes = await getTestSeriesByExam(slug);
+    setTests(testArray || []);
 
-        let totalMocks = 0;
+    const countMap = {};
 
-        for (let s of seriesRes.data) {
-          const tRes = await getTestsBySeries(s._id);
-          totalMocks += tRes.data.length;
-        }
+    for (let exam of testArray || []) {
+      const slug = exam.slug;
 
-        // get PYP
-        const pypRes = await getPYPByExam(slug);
+      const seriesRes = await getTestSeriesByExam(slug);
 
-        countMap[slug] = {
-          mocks: totalMocks,
-          pyp: pypRes.data.length,
-        };
+      let totalMocks = 0;
+
+      for (let s of seriesRes.data || []) {
+        const tRes = await getTestsBySeries(s._id);
+        totalMocks += tRes.data?.length || 0;
       }
 
-      setCounts(countMap);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+      const pypRes = await getPYPByExam(slug);
 
+      countMap[slug] = {
+        mocks: totalMocks,
+        pyp: pypRes.data?.length || 0,
+      };
+    }
+
+    setCounts(countMap);
+
+  } catch (err) {
+    console.error(err);
+  }
+};
   return (
     <div className="mt-10">
       <h2 className="text-3xl font-bold text-center mb-8">
