@@ -1,29 +1,4 @@
-// import Sidebar from "../components/home/Sidebar";
-// import HeroBanner from "../components/home/HeroBanner";
-// import CurrentAffairs from "../components/home/CurrentAffairs";
-// import PracticeSection from "../components/home/PracticeSection";
-// import PopularTests from "../components/home/PopularTests";
 
-// const Home = () => {
-//   return (
-//     <div className="bg-gray-100 flex">
-      
-//       {/* Sidebar */}
-//       <Sidebar />
-
-//       {/* Main Content */}
-//       <div className="ml-64 p-6 min-h-screen overflow-y-auto flex-1 md:ml-64" >
-//         <HeroBanner />
-//         <CurrentAffairs />
-//         <PracticeSection />
-//         <PopularTests/>
-//       </div>
-
-//     </div>
-//   );
-// };
-
-// export default Home;
 
 
 

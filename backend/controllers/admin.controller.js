@@ -1,7 +1,6 @@
 import Exam from "../models/Exam.js";
 import TestSeries from "../models/TestSeries.js";
 import User from "../models/userModels.js"
-// import Attempt from "../models/attempt.model.js";
 import TestAttempt from "../models/TestAttempt.js";
 
 
@@ -67,16 +66,6 @@ export const getAllUsers = async (req, res) => {
   res.json(users);
 };
 
-
-
-// export const getUserPerformance = async (req, res) => {
-//   const { userId } = req.params;
-
-//   const attempts = await Attempt.find({ user: userId })
-//     .populate("test");
-
-//   res.json(attempts);
-// };
 
 
 

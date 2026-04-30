@@ -226,6 +226,7 @@ const menu = [
         icon: <FileText size={18} />,
         children: [
           { name: "Add Questions", path: "/admin/add-question" },
+         { name: "Bulk Upload Questions", path: "/admin/add-question-bulk" },
           { name: "All Questions", path: "/admin/questions" }
         ]
       }

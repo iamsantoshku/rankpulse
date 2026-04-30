@@ -57,7 +57,8 @@ export const createQuestion = (data) =>
   API.post("/questions", data);
 
 
-
+export const bulkUploadQuestions = (data) =>
+  API.post("/questions/bulk", data);
 
 
 export const createTest = (data) =>

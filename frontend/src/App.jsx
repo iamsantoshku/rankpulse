@@ -161,6 +161,7 @@ const CreateTest = lazy(() => import("./components/admin/CreateTest"));
 const CreateQuestion = lazy(() => import("./components/admin/CreateQuestion"));
 const AdminUsers = lazy(() => import("./components/admin/AdminUsers"));
 const UserPerformance = lazy(() => import("./components/admin/UserPerformance"));
+const AddQuestionBulk = lazy(() => import("./components/admin/AddQuestionBulk"));
 
 // Layout
 import Header from "./components/Header";
@@ -252,6 +253,14 @@ function AppContent() {
               <Layout><CreateQuestion /></Layout>
             </ProtectedAdminRoute>
           } />
+
+            <Route path="/admin/add-question-bulk" element={
+            <ProtectedAdminRoute>
+              <Layout><AddQuestionBulk /></Layout>
+            </ProtectedAdminRoute>
+          } />
+
+          {/* <Route path="/admin/add-question-bulk" element={<AddQuestionBulk />} /> */}
 
           <Route path="/admin/users" element={
             <ProtectedAdminRoute>
