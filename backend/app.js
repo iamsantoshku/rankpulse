@@ -75,6 +75,7 @@ import testRoutes from "./routes/test.routes.js";
 import questionRoutes from "./routes/question.routes.js";
 import testPaperRoutes from "./routes/question.paper.routes.js";
 import attemptRoutes from "./routes/attempt.routes.js";
+import currentAffairRoutes from "./routes/currentAffair.routes.js";
 
 const app = express();
 
@@ -151,6 +152,7 @@ app.use("/api/test", testRoutes);
 app.use("/api/test-paper", testPaperRoutes);
 app.use("/api/questions", questionRoutes);
 app.use("/api/attempts", attemptRoutes);
+app.use("/api/current-affairs", currentAffairRoutes);
 
 /* =========================================
    ❤️ HEALTH CHECK

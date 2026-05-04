@@ -242,6 +242,11 @@ const menu = [
         icon: <FileText size={18} />
       },
       {
+        name: "ADD Current Affairs",
+        path: "/admin/add-current-affairs",
+        icon: <Settings size={18} />
+      },
+      {
         name: "Payments",
         path: "/admin/payments",
         icon: <CreditCard size={18} />

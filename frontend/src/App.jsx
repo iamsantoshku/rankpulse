@@ -151,6 +151,11 @@ const InstructionsPage = lazy(() => import("./pages/InstructionsPage"));
 const TestEngine = lazy(() => import("./pages/TestEngine"));
 const ResultPage = lazy(() => import("./pages/ResultPage"));
 const ReviewPage = lazy(() => import("./pages/ReviewPage"));
+const AttemptList = lazy(() => import("./pages/AttemptList"));
+const SolutionPage = lazy(() => import("./pages/SolutionPage"));
+const AnalysisPage = lazy(() => import("./pages/AnalysisPage"));
+const CurrentAffairs = lazy(() => import("./pages/CurrentAffairs"));
+const CurrentAffairDetails = lazy(() => import("./pages/CurrentAffairDetails"));
 
 // Admin
 const Dashboard = lazy(() => import("./components/admin/Dashboard"));
@@ -162,9 +167,15 @@ const CreateQuestion = lazy(() => import("./components/admin/CreateQuestion"));
 const AdminUsers = lazy(() => import("./components/admin/AdminUsers"));
 const UserPerformance = lazy(() => import("./components/admin/UserPerformance"));
 const AddQuestionBulk = lazy(() => import("./components/admin/AddQuestionBulk"));
+const AdminGenerateCA = lazy(() => import("./components/admin/AdminGenerateCA"));
+
 
 // Layout
 import Header from "./components/Header";
+// import AdminGenerateCA from "./components/admin/AdminGenerateCA";
+// import CurrentAffair from "../../backend/models/CurrentAffair";
+// import CurrentAffairs from "./pages/CurrentAffairs";
+// import CurrentAffairDetails from "./pages/CurrentAffairDetails";
 
 
 // 🔥 Loader Component (Better UX)
@@ -216,6 +227,15 @@ function AppContent() {
           <Route path="/start-test/:testId" element={<TestLayout><TestEngine /></TestLayout>} />
           <Route path="/result/:attemptId" element={<TestLayout><ResultPage /></TestLayout>} />
           <Route path="/review/:attemptId" element={<TestLayout><ReviewPage /></TestLayout>} />
+          <Route path="/attempt-analysis" element={<TestLayout><AttemptList /></TestLayout>} />
+          <Route path="/solution/:attemptId" element={<TestLayout><SolutionPage /></TestLayout>} />
+          <Route path="/analysis/:attemptId" element={<TestLayout><AnalysisPage /></TestLayout>} />
+          <Route path="/current-affairs" element={<TestLayout><CurrentAffairs /></TestLayout>} />
+          <Route path="/ca/:idcurrent-affairs" element={<TestLayout><CurrentAffairDetails /></TestLayout>} />
+
+          {/* <Route path="/current-affairs" element={<CurrentAffairs />} /><.   Route path="/ca/:id" element={<CurrentAffairDetails />} /> */}
+
+
 
           {/* ADMIN ROUTES */}
           <Route path="/admin/dashboard" element={
@@ -271,6 +291,12 @@ function AppContent() {
           <Route path="/admin/user/:id" element={
             <ProtectedAdminRoute>
               <Layout><UserPerformance /></Layout>
+            </ProtectedAdminRoute>
+          } />
+
+           <Route path="/admin/add-current-affairs" element={
+            <ProtectedAdminRoute>
+              <Layout><AdminGenerateCA /></Layout>
             </ProtectedAdminRoute>
           } />
 

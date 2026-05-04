@@ -92,6 +92,15 @@ export const getAttemptById = (id) =>
   API.get(`/attempts/${id}`);
 
 
+export const getUserAttempts = () =>
+  API.get("/attempts");
+
+export const getLeaderboard = (testId) =>
+  API.get(`/attempts/leaderboard/${testId}`);
+
+
+
+
 
 export const getAllUsers = () =>
   API.get("/admin/users");
@@ -102,3 +111,33 @@ export const getUserPerformance = (userId) =>
 export const getExamStats = () =>
   API.get("/admin/stats/exams");
 
+
+
+
+// ================= CURRENT AFFAIRS =================
+
+// 📄 Get all current affairs
+export const getCurrentAffairs = () =>
+  API.get("/current-affairs");
+
+// 📄 Get single CA by ID (with MCQs)
+export const getCurrentAffairById = (id) =>
+  API.get(`/current-affairs/${id}`);
+
+// ➕ Admin: Create CA manually
+export const createCurrentAffair = (data) =>
+  API.post("/current-affairs", data);
+
+// 🤖 Generate CA via AI (news → MCQ)
+export const generateCurrentAffair = () =>
+  API.post("/current-affairs/generate");
+
+// 🚀 Publish CA
+export const publishCA = (id) => {
+  return API.put(`/current-affairs/publish/${id}`);
+};
+
+// ❌ Delete CA
+export const deleteCA = (id) => {
+  return API.delete(`/current-affairs/${id}`);
+};
