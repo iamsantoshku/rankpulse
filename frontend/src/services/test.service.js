@@ -141,3 +141,10 @@ export const publishCA = (id) => {
 export const deleteCA = (id) => {
   return API.delete(`/current-affairs/${id}`);
 };
+
+
+export const createOrder = (amount) =>
+  API.post("/payment/create-order", { amount });
+
+export const verifyPayment = (data) =>
+  API.post("/payment/verify", data);

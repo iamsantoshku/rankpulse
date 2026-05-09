@@ -156,6 +156,7 @@ const SolutionPage = lazy(() => import("./pages/SolutionPage"));
 const AnalysisPage = lazy(() => import("./pages/AnalysisPage"));
 const CurrentAffairs = lazy(() => import("./pages/CurrentAffairs"));
 const CurrentAffairDetails = lazy(() => import("./pages/CurrentAffairDetails"));
+const BuySubscription = lazy(() => import("./components/BuySubscription"));
 
 // Admin
 const Dashboard = lazy(() => import("./components/admin/Dashboard"));
@@ -172,6 +173,7 @@ const AdminGenerateCA = lazy(() => import("./components/admin/AdminGenerateCA"))
 
 // Layout
 import Header from "./components/Header";
+// import BuySubscription from "./components/BuySubscription";
 // import AdminGenerateCA from "./components/admin/AdminGenerateCA";
 // import CurrentAffair from "../../backend/models/CurrentAffair";
 // import CurrentAffairs from "./pages/CurrentAffairs";
@@ -232,6 +234,7 @@ function AppContent() {
           <Route path="/analysis/:attemptId" element={<TestLayout><AnalysisPage /></TestLayout>} />
           <Route path="/current-affairs" element={<TestLayout><CurrentAffairs /></TestLayout>} />
           <Route path="/ca/:idcurrent-affairs" element={<TestLayout><CurrentAffairDetails /></TestLayout>} />
+          <Route path="/pricing" element={<TestLayout><BuySubscription /></TestLayout>} />
 
           {/* <Route path="/current-affairs" element={<CurrentAffairs />} /><.   Route path="/ca/:id" element={<CurrentAffairDetails />} /> */}
 

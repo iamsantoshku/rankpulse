@@ -43,11 +43,24 @@ const userSchema = new mongoose.Schema(
     refreshToken: {
       type: String
     },
+    isSubscribed: {
+    type: Boolean,
+    default: false
+  },
 
-    subscription: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Subscription"
-    }
+  subscriptionPlan: {
+    type: String, // monthly / yearly
+    default: null
+  },
+
+  subscriptionExpires: {
+    type: Date
+  }
+
+    // subscription: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "Subscription"
+    // }
   },
   { timestamps: true }
 );
