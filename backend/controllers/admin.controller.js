@@ -2,6 +2,8 @@ import Exam from "../models/Exam.js";
 import TestSeries from "../models/TestSeries.js";
 import User from "../models/userModels.js"
 import TestAttempt from "../models/TestAttempt.js";
+import Test from "../models/Test.js";
+import PreviousYear from "../models/PreviousYear.js";
 
 
 import slugify from "slugify";
@@ -46,20 +48,72 @@ export const createTestSeries = async (req, res) => {
 
 
 
+// export const getPopularExams = async (req, res) => {
+//   try {
+//     const exams = await Exam.aggregate([
+//       { $match: { isPopular: true } },
+//       { $sample: { size: 5 } } // random 5
+//     ]);
+
+//     res.json(exams);
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// };
+
 export const getPopularExams = async (req, res) => {
   try {
+
+    // 🔥 get random popular exams
     const exams = await Exam.aggregate([
       { $match: { isPopular: true } },
-      { $sample: { size: 5 } } // random 5
+      { $sample: { size: 5 } }
     ]);
 
-    res.json(exams);
+    // 🔥 add counts
+    const updatedExams = await Promise.all(
+
+      exams.map(async (exam) => {
+
+        // get all series
+        const series = await TestSeries.find({
+          exam: exam._id
+        });
+
+        const seriesIds = series.map((s) => s._id);
+
+        // total mocks
+        const totalMocks = await Test.countDocuments({
+          testSeries: { $in: seriesIds }
+        });
+
+        // total pyp
+        const totalPYP = await PreviousYear.countDocuments({
+          exam: exam._id
+        });
+
+        return {
+          ...exam,
+
+          mockCount: totalMocks,
+          pypCount: totalPYP,
+          seriesCount: series.length
+        };
+      })
+    );
+
+    res.status(200).json(updatedExams);
+
   } catch (err) {
-    res.status(500).json({ message: err.message });
+
+    console.error(err);
+
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
   }
 };
-
-
 
 export const getAllUsers = async (req, res) => {
   const users = await User.find().select("-password");

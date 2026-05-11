@@ -1,60 +1,6 @@
-// const TestCard = ({ title, features, logo, examName }) => {
-//   return (
-//     <div className="relative bg-white rounded-2xl shadow-md p-5 pt-14 w-full max-w-sm hover:scale-105 transition duration-300">
-      
-//       {/* Floating Badge */}
-//       <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white shadow-lg rounded-xl px-6 py-3 flex flex-col items-center">
-        
-//         {/* LOGO */}
-//         <img
-//           src={
-//             logo ||
-//             "https://via.placeholder.com/40?text=Exam"
-//           }
-//           alt="exam logo"
-//           className="w-10 h-10 mb-1 object-contain"
-//         />
 
-//         {/* EXAM NAME */}
-//         <p className="text-xs text-gray-500 text-center">
-//           {examName || "Exam"}
-//         </p>
 
-//         <p className="font-semibold text-sm">View Plans</p>
-//       </div>
 
-//       {/* TITLE */}
-//       <h3 className="text-lg font-bold mt-2 text-gray-800">
-//         {title}
-//       </h3>
-
-//       {/* FEATURES */}
-//       <ul className="mt-3 text-sm text-gray-600 space-y-1">
-//         {features?.map((f, i) => (
-//           <li key={i}>• {f}</li>
-//         ))}
-//       </ul>
-
-//       {/* BUTTONS */}
-//       <div className="flex gap-2 mt-4">
-//         <button className="flex-1 bg-indigo-700 text-white py-2 rounded-md hover:bg-indigo-800 transition">
-//           View All Tests
-//         </button>
-
-//         <button className="flex-1 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition">
-//           Buy Now
-//         </button>
-//       </div>
-
-//       <button className="w-full mt-3 border border-blue-500 text-blue-600 py-2 rounded-md hover:bg-blue-50 transition">
-//         Attempt Now
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default TestCard;
-// export default TestCard;
 
 
 // import { useNavigate } from "react-router-dom";
@@ -63,46 +9,48 @@
 //   const navigate = useNavigate();
 
 //   return (
-//     <div className="relative bg-white rounded-2xl shadow-md p-5 pt-14 w-full max-w-sm hover:scale-105 transition duration-300">
-      
-//       {/* Floating Badge */}
-//       <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white shadow-lg rounded-xl px-6 py-3 flex flex-col items-center">
-        
+//     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 w-full max-w-sm overflow-hidden">
+
+//       {/* Top Section */}
+//       <div className="flex items-center gap-4 p-4 border-b">
 //         <img
-//           src={logo || "https://via.placeholder.com/40"}
-//           className="w-10 h-10 mb-1 object-contain"
+//           src={logo || "https://via.placeholder.com/50"}
+//           alt="logo"
+//           className="w-12 h-12 object-contain rounded-md border"
 //         />
 
-//         <p className="text-xs text-gray-500">{examName}</p>
-//         <p className="font-semibold text-sm">View Plans</p>
+//         <div>
+//           <p className="text-sm text-gray-500">{examName}</p>
+//           <h3 className="text-lg font-bold">{title}</h3>
+//         </div>
 //       </div>
 
-//       <h3 className="text-lg font-bold mt-2">{title}</h3>
+//       {/* Features */}
+//       <div className="p-4">
+//         <ul className="text-sm text-gray-600 space-y-1">
+//           {features?.map((f, i) => (
+//             <li key={i}>• {f}</li>
+//           ))}
+//         </ul>
 
-//       <ul className="mt-3 text-sm text-gray-600 space-y-1">
-//         {features?.map((f, i) => (
-//           <li key={i}>• {f}</li>
-//         ))}
-//       </ul>
+//         {/* Buttons */}
+//         <div className="flex gap-2 mt-4">
+//           <button
+//             onClick={() => navigate(`/exam/${slug}`)}
+//             className="flex-1 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
+//           >
+//             View Tests
+//           </button>
 
-//       <div className="flex gap-2 mt-4">
-        
-//         {/* 🔥 NAVIGATION HERE */}
-//         <button
-//           onClick={() => navigate(`/exam/${slug}`)}
-//           className="flex-1 bg-indigo-700 text-white py-2 rounded-md"
-//         >
-//           View All Tests
-//         </button>
+//           <button className="flex-1 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">
+//             Buy
+//           </button>
+//         </div>
 
-//         <button className="flex-1 bg-blue-500 text-white py-2 rounded-md">
-//           Buy Now
+//         <button className="w-full mt-3 border border-indigo-500 text-indigo-600 py-2 rounded-lg hover:bg-indigo-50">
+//           Attempt Free
 //         </button>
 //       </div>
-
-//       <button className="w-full mt-3 border border-blue-500 text-blue-600 py-2 rounded-md">
-//         Attempt Now
-//       </button>
 //     </div>
 //   );
 // };
@@ -111,55 +59,128 @@
 
 
 
-
 import { useNavigate } from "react-router-dom";
 
-const TestCard = ({ title, features, logo, examName, slug }) => {
+const TestCard = ({
+  title,
+  logo,
+  examName,
+  slug,
+  mockCount,
+  pypCount,
+  seriesCount
+}) => {
+
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 w-full max-w-sm overflow-hidden">
 
-      {/* Top Section */}
-      <div className="flex items-center gap-4 p-4 border-b">
-        <img
-          src={logo || "https://via.placeholder.com/50"}
-          alt="logo"
-          className="w-12 h-12 object-contain rounded-md border"
-        />
+    <div className="group bg-white rounded-3xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden w-full max-w-sm border">
 
-        <div>
-          <p className="text-sm text-gray-500">{examName}</p>
-          <h3 className="text-lg font-bold">{title}</h3>
+      {/* Top */}
+      <div className="p-5 border-b bg-gradient-to-r from-indigo-50 to-white">
+
+        <div className="flex items-center gap-4">
+
+          <div className="bg-white p-2 rounded-xl shadow-sm border">
+
+            <img
+              src={
+                logo ||
+                "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              }
+              alt="logo"
+              className="w-14 h-14 object-contain"
+            />
+
+          </div>
+
+          <div>
+
+            <p className="text-sm text-gray-500">
+              {examName}
+            </p>
+
+            <h3 className="text-xl font-bold text-gray-800">
+              {title}
+            </h3>
+
+          </div>
+
         </div>
+
       </div>
 
-      {/* Features */}
-      <div className="p-4">
-        <ul className="text-sm text-gray-600 space-y-1">
-          {features?.map((f, i) => (
-            <li key={i}>• {f}</li>
-          ))}
-        </ul>
+      {/* Stats */}
+      <div className="p-5">
+
+        <div className="grid grid-cols-3 gap-3 mb-5">
+
+          {/* <div className="bg-indigo-50 rounded-xl p-3 text-center">
+
+            <p className="text-xl font-bold text-indigo-700">
+              {seriesCount}
+            </p>
+
+            <p className="text-xs text-gray-500">
+              Series
+            </p>
+
+          </div> */}
+
+          <div className="bg-green-50 rounded-xl p-3 text-center">
+
+            <p className="text-xl font-bold text-green-700">
+              {mockCount}
+            </p>
+
+            <p className="text-xs text-gray-500">
+              Mock Tests
+            </p>
+
+          </div>
+
+          <div className="bg-orange-50 rounded-xl p-3 text-center">
+
+            <p className="text-xl font-bold text-orange-700">
+              {pypCount}
+            </p>
+
+            <p className="text-xs text-gray-500">
+              PYP
+            </p>
+
+          </div>
+
+        </div>
 
         {/* Buttons */}
-        <div className="flex gap-2 mt-4">
+        <div className="flex gap-3">
+
           <button
             onClick={() => navigate(`/exam/${slug}`)}
-            className="flex-1 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
+            className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition"
           >
             View Tests
           </button>
 
-          <button className="flex-1 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">
-            Buy
+          <button
+            className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-semibold transition"
+          >
+            Buy Now
           </button>
+
         </div>
 
-        <button className="w-full mt-3 border border-indigo-500 text-indigo-600 py-2 rounded-lg hover:bg-indigo-50">
+        {/* Free Attempt */}
+        <button
+          className="w-full mt-3 border border-indigo-500 text-indigo-600 hover:bg-indigo-50 py-3 rounded-xl font-semibold transition"
+        >
           Attempt Free
         </button>
+
       </div>
+
     </div>
   );
 };
