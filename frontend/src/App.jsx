@@ -215,6 +215,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import InstallApp from "./components/InstallApp";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Sidebar from "./components/home/Sidebar";
 
 
 // ================= LAZY IMPORTS =================
@@ -283,8 +285,34 @@ const Loader = () => (
 
 const MainLayout = ({ children }) => (
   <>
-    <Header />
+    {/* <Header />
+    
     {children}
+     <Footer /> */}
+
+      <div className="bg-gray-100 min-h-screen">
+
+      {/* HEADER */}
+      <Header />
+
+      {/* SIDEBAR */}
+      <Sidebar />
+
+      {/* MAIN CONTENT */}
+      <main
+        className="
+          md:ml-64
+          pt-10
+          min-h-screen
+          transition-all
+          duration-300
+        "
+      >
+        {children}
+
+       
+      </main>
+    </div>
   </>
 );
 
@@ -294,20 +322,63 @@ const TestLayout = ({ children }) => (
   </div>
 );
 
-const Layout = ({ children }) => {
-  return (
-    <>
-      <Header />
+// const Layout = ({ children }) => {
+//   return (
+//     <>
+//       <Header />
 
-      <div className="pt-20">
-        {children}
-      </div>
-    </>
-  );
-};
+//       <div className="pt-20">
+//         {children}
+//       </div>
+//     </>
+//   );
+// };
 
 // ================= APP CONTENT =================
 
+
+// const Layout = ({ children }) => {
+//   return (
+//     <>
+//       <Header />
+
+//       <div className="pt-20 min-h-screen">
+//         {children}
+//       </div>
+
+//       <Footer />
+//     </>
+//   );
+// };
+
+const Layout = ({ children }) => {
+  return (
+    <div className="bg-gray-100 min-h-screen">
+
+     
+      <Header />
+
+      <Sidebar />
+      
+
+      {/* Main Content */}
+      <main
+        className="
+          md:ml-64
+          pt-10
+          min-h-screen
+          transition-all
+          duration-300
+        "
+      >
+        {children}
+
+        {/* Footer */}
+        <Footer />
+      </main>
+    </div>
+  );
+};
 const AppContent = () => {
   const { loading } = useContext(AuthContext);
 
@@ -481,11 +552,6 @@ const AppContent = () => {
     </Layout>
   }
 />
-
-
-
-
-
 
 
           {/* ================= ADMIN ROUTES ================= */}

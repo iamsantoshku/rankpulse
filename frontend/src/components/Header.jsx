@@ -89,28 +89,7 @@ const Header = () => {
             <div className="hidden md:flex items-center gap-4">
 
               {/* Test Series Dropdown */}
-              <div className="relative group">
-                <button className="flex items-center gap-1 text-gray-700 hover:text-indigo-600 font-medium">
-                  Test Series
-                  <span className="text-xs">▼</span>
-                </button>
-
-                {/* Dropdown */}
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white border rounded-lg shadow-lg hidden group-hover:block">
-                  <Link
-                    to="/test-series"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    All Test Series
-                  </Link>
-                  <Link
-                    to="/pyp"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Previous Year Papers
-                  </Link>
-                </div>
-              </div>
+              
 
             </div>
           </div>
