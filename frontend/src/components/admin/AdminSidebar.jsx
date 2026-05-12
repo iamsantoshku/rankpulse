@@ -234,6 +234,22 @@ const menu = [
   },
 
   {
+    section: "Daily Quiz",
+    items: [
+      {
+        name: "daily quiz management",
+        icon: <BookOpen size={18} />,
+        children: [
+          { name: "Add quize", path: "/admin/daily-quiz" },
+          // { name: "Add Test Series", path: "/admin/add-test-series" },
+          // { name: "Add Previous Papers", path: "/admin/add-pyp" },
+          // { name: "Create Test Paper", path: "/admin/create-test" }
+        ]
+      }
+    ]
+  },
+
+  {
     section: "OTHER",
     items: [
       {
@@ -250,6 +266,11 @@ const menu = [
         name: "Payments",
         path: "/admin/payments",
         icon: <CreditCard size={18} />
+      },
+      {
+        name: "Add Notes",
+        path: "/admin/add-notes",
+        icon: <Settings size={18} />
       },
       {
         name: "Settings",

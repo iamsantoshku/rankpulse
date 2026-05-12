@@ -41,13 +41,13 @@ const PracticeSection = () => {
         <Card
           title="Daily Quiz"
           icon="❓"
-          path="/quiz"
+          path="/daily-quiz"
         />
 
         <Card
-          title="Typing Test"
+          title="Study Notes"
           icon="⌨️"
-          path="/typing"
+          path="/study-notes"   // ✅ NOW WORKS
         />
 
       </div>

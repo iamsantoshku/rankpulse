@@ -107,7 +107,7 @@ const menu = [
   { title: "Free Mock Test", path: "/exams", icon: Zap },
   { title: "Live Test", icon: Clock, highlight: true },
   { title: "Free Test", icon: BarChart },
-  { title: "Daily Quiz", icon: BookOpen },
+  { title: "Daily Quiz", path: "/daily-quiz", icon: BookOpen },
   { title: "Typing Test", icon: Keyboard },
   { title: "Previous Year Paper", icon: Layers },
   { title: "Current Affairs", icon: Newspaper },

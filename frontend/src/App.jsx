@@ -241,6 +241,14 @@ const ReviewPage = lazy(() => import("./pages/ReviewPage"));
 const AttemptList = lazy(() => import("./pages/AttemptList"));
 const SolutionPage = lazy(() => import("./pages/SolutionPage"));
 const AnalysisPage = lazy(() => import("./pages/AnalysisPage"));
+const DailyQuizPage = lazy(() => import("./pages/DailyQuizPage"));
+const QuizAttemptPage = lazy(() => import("./pages/QuizAttemptPage"));
+const QuizResultPage = lazy(() => import("./pages/QuizResultPage"));
+const StudyNotesPage = lazy(() => import("./pages/notes/StudyNotesPage"));
+const SubjectNotesPage = lazy(() =>import("./pages/notes/SubjectNotesPage"));
+const NotesViewerPage = lazy(() =>import("./pages/notes/NotesViewerPage"));
+
+
 
 
 // Admin
@@ -254,6 +262,8 @@ const AddQuestionBulk = lazy(() => import("./components/admin/AddQuestionBulk"))
 const AdminUsers = lazy(() => import("./components/admin/AdminUsers"));
 const UserPerformance = lazy(() => import("./components/admin/UserPerformance"));
 const AdminGenerateCA = lazy(() => import("./components/admin/AdminGenerateCA"));
+const AdminQuizPage = lazy(() => import("./components/admin/AdminQuizPage"));
+const AdminStudyNotes = lazy(() =>import("./components/admin/AdminStudyNotes"));
 
 
 // Extra
@@ -284,6 +294,17 @@ const TestLayout = ({ children }) => (
   </div>
 );
 
+const Layout = ({ children }) => {
+  return (
+    <>
+      <Header />
+
+      <div className="pt-20">
+        {children}
+      </div>
+    </>
+  );
+};
 
 // ================= APP CONTENT =================
 
@@ -418,6 +439,54 @@ const AppContent = () => {
           />
 
 
+          <Route
+  path="/daily-quiz"
+  element={<DailyQuizPage />}
+/>
+
+<Route
+  path="/daily-quiz/:id"
+  element={<QuizAttemptPage />}
+/>
+
+<Route
+  path="/daily-result"
+  element={<QuizResultPage />}
+/>
+
+
+<Route
+  path="/study-notes"
+  element={
+    <Layout>
+      <StudyNotesPage />
+    </Layout>
+  }
+/>
+
+<Route
+  path="/study-notes/:examId"
+  element={
+    <Layout>
+      <SubjectNotesPage />
+    </Layout>
+  }
+/>
+
+<Route
+  path="/study-notes/:examId/:subject"
+  element={
+    <Layout>
+      <NotesViewerPage />
+    </Layout>
+  }
+/>
+
+
+
+
+
+
 
           {/* ================= ADMIN ROUTES ================= */}
 
@@ -510,6 +579,26 @@ const AppContent = () => {
               </ProtectedAdminRoute>
             }
           />
+
+          <Route
+  path="/admin/daily-quiz"
+  element={
+    <ProtectedAdminRoute>
+      <AdminQuizPage />
+    </ProtectedAdminRoute>
+  }
+/>
+
+<Route
+  path="/admin/add-notes"
+  element={
+    <ProtectedAdminRoute>
+      <Layout>
+        <AdminStudyNotes />
+      </Layout>
+    </ProtectedAdminRoute>
+  }
+/>
 
 
 
