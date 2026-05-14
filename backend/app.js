@@ -79,6 +79,7 @@ import currentAffairRoutes from "./routes/currentAffair.routes.js";
 import paymentRoutes from "./routes/payment.routes.js";
 import dailyQuizRoutes from "./routes/dailyQuiz.routes.js";
 import studyNoteRoutes from "./routes/studyNote.routes.js";
+import aiRoutes from "./routes/ai.routes.js";
 
 const app = express();
 
@@ -167,6 +168,7 @@ app.use(
   "/api/study-notes",
   studyNoteRoutes
 );
+app.use("/api/ai", aiRoutes);
 
 /* =========================================
    ❤️ HEALTH CHECK

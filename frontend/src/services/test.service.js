@@ -148,3 +148,8 @@ export const createOrder = (amount) =>
 
 export const verifyPayment = (data) =>
   API.post("/payment/verify", data);
+
+
+// 🤖 Ask AI
+export const askAI = (message) =>
+  API.post("/ai/chat", { message });

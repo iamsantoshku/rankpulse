@@ -1,43 +1,190 @@
+
+
+
+
 <!doctype html>
-<html lang="en">
- <head>
+<html lang="en-IN">
+<head>
+  <!-- =========================================
+       BASIC META TAGS
+  ========================================== -->
   <meta charset="UTF-8" />
-  <link rel="icon" href="/logo.svg" />
- 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="mobile-web-app-capable" content="yes" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
 
-  <!-- SEO -->
-  <title>RankPulse - Practice Mock Tests</title>
-  <meta name="description" content="Practice mock tests, PYQs, and quizzes like Testbook." />
+  <!-- =========================================
+       PRIMARY SEO
+  ========================================== -->
+  <title>
+    RankPulse - Online Mock Tests, Previous Year Papers, Quizzes & Exam Preparation
+  </title>
 
-  <!-- PWA -->
+  <meta
+    name="description"
+    content="RankPulse provides online mock tests, previous year papers, daily quizzes, study notes and exam preparation for SSC, Railway, Banking, UPSC, State Exams and more."
+  />
+
+  <meta
+    name="keywords"
+    content="RankPulse, mock tests, online test series, previous year papers, PYQ, quizzes, SSC preparation, Railway exam preparation, RRB JE, Banking exams, UPSC, State exams, study notes"
+  />
+
+  <meta name="author" content="RankPulse" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="1 days" />
+  <meta name="distribution" content="global" />
+  <meta name="rating" content="general" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://rankpulse.onrender.com/" />
+
+  <!-- =========================================
+       FAVICONS & ICONS
+  ========================================== -->
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="shortcut icon" href="/logo.svg" />
+  <link rel="apple-touch-icon" href="/logo.svg" />
+  <link rel="mask-icon" href="/logo.svg" color="#2563eb" />
+
+  <!-- =========================================
+       PWA SETTINGS
+  ========================================== -->
   <meta name="theme-color" content="#2563eb" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <link rel="manifest" href="/manifest.webmanifest" />
 
-  <!-- iOS Support -->
+  <!-- iOS PWA -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="apple-touch-icon" href="/logo.svg" />
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+  />
+  <meta name="apple-mobile-web-app-title" content="RankPulse" />
 
+  <!-- Windows -->
+  <meta name="msapplication-TileColor" content="#2563eb" />
+  <meta name="msapplication-navbutton-color" content="#2563eb" />
+
+  <!-- =========================================
+       OPEN GRAPH (FACEBOOK, LINKEDIN)
+  ========================================== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="RankPulse" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:url" content="https://rankpulse.onrender.com/" />
+  <meta
+    property="og:title"
+    content="RankPulse - Online Mock Tests, PYQs & Exam Preparation"
+  />
+  <meta
+    property="og:description"
+    content="Practice mock tests, previous year papers, quizzes and study notes for SSC, Railway, Banking, UPSC and State exams."
+  />
+  <meta property="og:image" content="https://www.rankpulse.in/logo.svg" />
+  <meta property="og:image:alt" content="RankPulse Logo" />
+
+  <!-- =========================================
+       TWITTER CARD
+  ========================================== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="RankPulse - Online Mock Tests, PYQs & Exam Preparation"
+  />
+  <meta
+    name="twitter:description"
+    content="Prepare for SSC, Railway, Banking, UPSC and State exams with mock tests, PYQs, quizzes and study notes."
+  />
+  <meta name="twitter:image" content="https://rankpulse.onrender.com/logo.svg" />
+  <meta name="twitter:image:alt" content="RankPulse Logo" />
+
+  <!-- =========================================
+       GOOGLE SITE VERIFICATION
+       (Replace with your actual verification code)
+  ========================================== -->
+  <!--
+  <meta
+    name="google-site-verification"
+    content="YOUR_GOOGLE_VERIFICATION_CODE"
+  />
+  -->
+
+  <!-- =========================================
+       STRUCTURED DATA (JSON-LD)
+  ========================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RankPulse",
+    "url": "https://rankpulse.onrender.com/",
+    "logo": "https://rankpulse.onrender.com/logo.svg",
+    "sameAs": [
+      "https://www.facebook.com/rankpulse",
+      "https://www.instagram.com/rankpulse",
+      "https://www.linkedin.com/company/rankpulse",
+      "https://www.youtube.com/@rankpulse"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "RankPulse",
+    "url": "https://rankpulse.onrender.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://rankpulse.onrender.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "RankPulse",
+    "url": "https://rankpulse.onrender.com/",
+    "logo": "https://rankpulse.onrender.com/logo.svg",
+    "description": "Online platform for mock tests, previous year papers, quizzes and study notes for competitive exams."
+  }
+  </script>
+
+  <!-- =========================================
+       PERFORMANCE OPTIMIZATION
+  ========================================== -->
+  <link rel="preconnect" href="https://checkout.razorpay.com" crossorigin />
+  <link rel="dns-prefetch" href="//checkout.razorpay.com" />
+
+  <!-- =========================================
+       MAIN APPLICATION ENTRY
+  ========================================== -->
+  <script type="module" src="/src/main.jsx"></script>
 </head>
 
-  <body class="bg-gray-50">
+<body class="bg-gray-50 antialiased">
+  <!-- NO JAVASCRIPT FALLBACK -->
+  <noscript>
+    You need to enable JavaScript to run RankPulse.
+  </noscript>
 
-    <!-- ✅ NO JS FALLBACK -->
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+  <!-- REACT ROOT -->
+  <div id="root"></div>
 
-    <!-- ✅ ROOT -->
-    <div id="root"></div>
-
-    <!-- ✅ MAIN SCRIPT -->
-     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script type="module" src="/src/main.jsx"></script>
-
-  </body>
+  <!-- RAZORPAY CHECKOUT -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+</body>
 </html>
+
 
 
 

@@ -217,6 +217,7 @@ import InstallApp from "./components/InstallApp";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sidebar from "./components/home/Sidebar";
+import AdminLayout from "./components/admin/AdminLayout";
 
 
 // ================= LAZY IMPORTS =================
@@ -247,8 +248,9 @@ const DailyQuizPage = lazy(() => import("./pages/DailyQuizPage"));
 const QuizAttemptPage = lazy(() => import("./pages/QuizAttemptPage"));
 const QuizResultPage = lazy(() => import("./pages/QuizResultPage"));
 const StudyNotesPage = lazy(() => import("./pages/notes/StudyNotesPage"));
-const SubjectNotesPage = lazy(() =>import("./pages/notes/SubjectNotesPage"));
-const NotesViewerPage = lazy(() =>import("./pages/notes/NotesViewerPage"));
+const SubjectNotesPage = lazy(() => import("./pages/notes/SubjectNotesPage"));
+const NotesViewerPage = lazy(() => import("./pages/notes/NotesViewerPage"));
+const AIChat = lazy(() => import("./components/ai/AIChat"));
 
 
 
@@ -265,7 +267,8 @@ const AdminUsers = lazy(() => import("./components/admin/AdminUsers"));
 const UserPerformance = lazy(() => import("./components/admin/UserPerformance"));
 const AdminGenerateCA = lazy(() => import("./components/admin/AdminGenerateCA"));
 const AdminQuizPage = lazy(() => import("./components/admin/AdminQuizPage"));
-const AdminStudyNotes = lazy(() =>import("./components/admin/AdminStudyNotes"));
+const AdminStudyNotes = lazy(() => import("./components/admin/AdminStudyNotes"));
+// const AdminLayout = lazy(() => import("./components/admin/AdminLayout"));
 
 
 // Extra
@@ -290,7 +293,7 @@ const MainLayout = ({ children }) => (
     {children}
      <Footer /> */}
 
-      <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 min-h-screen">
 
       {/* HEADER */}
       <Header />
@@ -299,18 +302,21 @@ const MainLayout = ({ children }) => (
       <Sidebar />
 
       {/* MAIN CONTENT */}
+
+
       <main
         className="
-          md:ml-64
-          pt-10
-          min-h-screen
-          transition-all
-          duration-300
-        "
+    md:ml-[270px]
+    ml-0
+    pt-0
+    min-h-screen
+    transition-all
+    duration-300
+  "
       >
         {children}
 
-       
+
       </main>
     </div>
   </>
@@ -322,54 +328,33 @@ const TestLayout = ({ children }) => (
   </div>
 );
 
-// const Layout = ({ children }) => {
-//   return (
-//     <>
-//       <Header />
 
-//       <div className="pt-20">
-//         {children}
-//       </div>
-//     </>
-//   );
-// };
 
 // ================= APP CONTENT =================
 
 
-// const Layout = ({ children }) => {
-//   return (
-//     <>
-//       <Header />
 
-//       <div className="pt-20 min-h-screen">
-//         {children}
-//       </div>
-
-//       <Footer />
-//     </>
-//   );
-// };
 
 const Layout = ({ children }) => {
   return (
     <div className="bg-gray-100 min-h-screen">
 
-     
+
       <Header />
 
       <Sidebar />
-      
+
 
       {/* Main Content */}
       <main
         className="
-          md:ml-64
-          pt-10
-          min-h-screen
-          transition-all
-          duration-300
-        "
+    md:ml-[270px]
+    ml-0
+    pt-0
+    min-h-screen
+    transition-all
+    duration-300
+  "
       >
         {children}
 
@@ -432,6 +417,10 @@ const AppContent = () => {
             path="/pricing"
             element={<MainLayout><BuySubscription /></MainLayout>}
           />
+          <Route
+            path="/ai-chat"
+            element={<MainLayout><AIChat /> </MainLayout>}
+          />
 
           <Route
             path="/profile"
@@ -468,7 +457,7 @@ const AppContent = () => {
             path="/result/:attemptId"
             element={
               <ProtectedRoute>
-                <TestLayout><ResultPage /></TestLayout>
+                <Layout><ResultPage /></Layout>
               </ProtectedRoute>
             }
           />
@@ -486,7 +475,7 @@ const AppContent = () => {
             path="/attempt-analysis"
             element={
               <ProtectedRoute>
-                <TestLayout><AttemptList /></TestLayout>
+                <Layout><AttemptList /></Layout>
               </ProtectedRoute>
             }
           />
@@ -495,7 +484,7 @@ const AppContent = () => {
             path="/solution/:attemptId"
             element={
               <ProtectedRoute>
-                <TestLayout><SolutionPage /></TestLayout>
+                <Layout><SolutionPage /></Layout>
               </ProtectedRoute>
             }
           />
@@ -504,54 +493,54 @@ const AppContent = () => {
             path="/analysis/:attemptId"
             element={
               <ProtectedRoute>
-                <TestLayout><AnalysisPage /></TestLayout>
+                <Layout><AnalysisPage /></Layout>
               </ProtectedRoute>
             }
           />
 
 
           <Route
-  path="/daily-quiz"
-  element={<DailyQuizPage />}
-/>
+            path="/daily-quiz"
+            element={<Layout><DailyQuizPage /></Layout>}
+          />
 
-<Route
-  path="/daily-quiz/:id"
-  element={<QuizAttemptPage />}
-/>
+          <Route
+            path="/daily-quiz/:id"
+            element={<Layout><QuizAttemptPage /></Layout>}
+          />
 
-<Route
-  path="/daily-result"
-  element={<QuizResultPage />}
-/>
+          <Route
+            path="/daily-result"
+            element={<Layout><QuizResultPage /></Layout>}
+          />
 
 
-<Route
-  path="/study-notes"
-  element={
-    <Layout>
-      <StudyNotesPage />
-    </Layout>
-  }
-/>
+          <Route
+            path="/study-notes"
+            element={
+              <Layout>
+                <StudyNotesPage />
+              </Layout>
+            }
+          />
 
-<Route
-  path="/study-notes/:examId"
-  element={
-    <Layout>
-      <SubjectNotesPage />
-    </Layout>
-  }
-/>
+          <Route
+            path="/study-notes/:examId"
+            element={
+              <Layout>
+                <SubjectNotesPage />
+              </Layout>
+            }
+          />
 
-<Route
-  path="/study-notes/:examId/:subject"
-  element={
-    <Layout>
-      <NotesViewerPage />
-    </Layout>
-  }
-/>
+          <Route
+            path="/study-notes/:examId/:subject"
+            element={
+              <Layout>
+                <NotesViewerPage />
+              </Layout>
+            }
+          />
 
 
           {/* ================= ADMIN ROUTES ================= */}
@@ -560,7 +549,7 @@ const AppContent = () => {
             path="/admin/dashboard"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><Dashboard /></MainLayout>
+                <AdminLayout><Dashboard /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
@@ -569,7 +558,7 @@ const AppContent = () => {
             path="/admin/add-exam"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><CreateExam /></MainLayout>
+                <AdminLayout><CreateExam /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
@@ -578,7 +567,7 @@ const AppContent = () => {
             path="/admin/add-test-series"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><CreateTestSeries /></MainLayout>
+                <AdminLayout><CreateTestSeries /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
@@ -587,7 +576,7 @@ const AppContent = () => {
             path="/admin/add-pyp"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><CreatePYP /></MainLayout>
+                <AdminLayout><CreatePYP /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
@@ -596,7 +585,7 @@ const AppContent = () => {
             path="/admin/create-test"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><CreateTest /></MainLayout>
+                <AdminLayout><CreateTest /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
@@ -605,7 +594,7 @@ const AppContent = () => {
             path="/admin/add-question"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><CreateQuestion /></MainLayout>
+                <AdminLayout><CreateQuestion /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
@@ -614,7 +603,7 @@ const AppContent = () => {
             path="/admin/add-question-bulk"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><AddQuestionBulk /></MainLayout>
+                <AdminLayout><AddQuestionBulk /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
@@ -623,7 +612,7 @@ const AppContent = () => {
             path="/admin/users"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><AdminUsers /></MainLayout>
+                <AdminLayout><AdminUsers /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
@@ -632,7 +621,7 @@ const AppContent = () => {
             path="/admin/user/:id"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><UserPerformance /></MainLayout>
+                <AdminLayout><UserPerformance /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
@@ -641,30 +630,30 @@ const AppContent = () => {
             path="/admin/add-current-affairs"
             element={
               <ProtectedAdminRoute>
-                <MainLayout><AdminGenerateCA /></MainLayout>
+                <AdminLayout><AdminGenerateCA /></AdminLayout>
               </ProtectedAdminRoute>
             }
           />
 
           <Route
-  path="/admin/daily-quiz"
-  element={
-    <ProtectedAdminRoute>
-      <AdminQuizPage />
-    </ProtectedAdminRoute>
-  }
-/>
+            path="/admin/daily-quiz"
+            element={
+              <ProtectedAdminRoute>
+                <AdminQuizPage />
+              </ProtectedAdminRoute>
+            }
+          />
 
-<Route
-  path="/admin/add-notes"
-  element={
-    <ProtectedAdminRoute>
-      <Layout>
-        <AdminStudyNotes />
-      </Layout>
-    </ProtectedAdminRoute>
-  }
-/>
+          <Route
+            path="/admin/add-notes"
+            element={
+              <ProtectedAdminRoute>
+                <Layout>
+                  <AdminStudyNotes />
+                </Layout>
+              </ProtectedAdminRoute>
+            }
+          />
 
 
 

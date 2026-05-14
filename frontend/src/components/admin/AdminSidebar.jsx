@@ -179,6 +179,9 @@ import {
   BarChart3
 } from "lucide-react";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
+
 
 const menu = [
   {
@@ -299,12 +302,20 @@ const AdminSidebar = () => {
   const isParentActive = (children) =>
     children?.some((child) => location.pathname === child.path);
 
+  const navigate = useNavigate();
+
   return (
     <div className="w-64 h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white fixed flex flex-col">
 
       {/* 🔥 LOGO */}
       <div className="p-5 border-b border-gray-700">
-        <h2 className="text-2xl font-bold text-blue-400">RankPulse</h2>
+        {/* <h2 onClick={() => navigate("/")} className="text-2xl font-bold text-blue-400">RankPulse</h2> */}
+        <h2
+  onClick={() => navigate("/")}
+  className="text-2xl font-bold text-blue-400 cursor-pointer"
+>
+  RankPulse
+</h2>
         <p className="text-xs text-gray-400">Admin Panel</p>
       </div>
 

@@ -93,9 +93,14 @@ const Home = () => {
           duration-300
         "
       > */}
-        <div className="px-4 sm:px-6 lg:px-8 py-0">
+        {/* <div className="px-4 sm:px-6 lg:px-8 py-0">
 
-          <div className="max-w-7xl mx-auto space-y-10">
+          <div className="max-w-7xl mx-auto space-y-10"> */}
+
+           <div className="bg-gray-50 min-h-screen overflow-hidden">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
 
             {/* HERO */}
             <HeroBanner />
