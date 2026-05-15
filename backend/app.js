@@ -175,15 +175,15 @@ app.use("/api/attempts", attemptRoutes);
 app.use("/api/current-affairs", currentAffairRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/daily-quiz", dailyQuizRoutes);
-app.use(
-  "/uploads",
-  express.static("uploads")
-);
-
 // app.use(
-//   "/api/study-notes",
-//   studyNoteRoutes
+//   "/uploads",
+//   express.static("uploads")
 // );
+
+app.use(
+  "/api/study-notes",
+  studyNoteRoutes
+);
 app.use("/api/ai", aiRoutes);
 
 /* =========================================
