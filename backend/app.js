@@ -67,6 +67,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import compression from "compression";
 import rateLimit from "express-rate-limit";
+import path from "path";
+import { fileURLToPath } from "url";
 
 // Routes
 import authRoutes from "./routes/auth.routes.js";
@@ -82,6 +84,11 @@ import studyNoteRoutes from "./routes/studyNote.routes.js";
 import aiRoutes from "./routes/ai.routes.js";
 
 const app = express();
+
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /* =========================================
    🔐 SECURITY MIDDLEWARE
@@ -146,6 +153,15 @@ if (process.env.NODE_ENV === "production") {
   app.use(morgan("dev"));
 }
 
+
+
+app.use(
+  "/uploads",
+  express.static(
+    path.join(__dirname, "uploads")
+  )
+);
+
 /* =========================================
    🧭 ROUTES
 ========================================= */
@@ -164,10 +180,10 @@ app.use(
   express.static("uploads")
 );
 
-app.use(
-  "/api/study-notes",
-  studyNoteRoutes
-);
+// app.use(
+//   "/api/study-notes",
+//   studyNoteRoutes
+// );
 app.use("/api/ai", aiRoutes);
 
 /* =========================================
