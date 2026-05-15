@@ -29,10 +29,42 @@
 
 
 
+// import multer from "multer";
+
+// import { CloudinaryStorage } from "multer-storage-cloudinary";
+
+// import cloudinary from "../config/cloudinary.js";
+
+// const storage = new CloudinaryStorage({
+//   cloudinary,
+
+//   params: async (req, file) => ({
+//     folder: "rankpulse-notes",
+
+//     resource_type: "raw",
+
+//     type: "upload",
+
+//     access_mode: "public",
+
+//     public_id:
+//       Date.now() + "-" + file.originalname,
+
+//     format: "pdf",
+//   }),
+// });
+
+// const upload = multer({
+//   storage,
+// });
+
+// export default upload;
+
+
+
+
 import multer from "multer";
-
 import { CloudinaryStorage } from "multer-storage-cloudinary";
-
 import cloudinary from "../config/cloudinary.js";
 
 const storage = new CloudinaryStorage({
@@ -41,21 +73,21 @@ const storage = new CloudinaryStorage({
   params: async (req, file) => ({
     folder: "rankpulse-notes",
 
-    resource_type: "raw",
-
-    type: "upload",
-
-    access_mode: "public",
-
-    public_id:
-      Date.now() + "-" + file.originalname,
+    resource_type: "image",
 
     format: "pdf",
-  }),
+
+    public_id:
+      Date.now() +
+      "-" +
+      file.originalname
+        .replace(/\s+/g, "-")
+        .replace(".pdf", "")
+  })
 });
 
-const upload = multer({
-  storage,
+const uploadNotes = multer({
+  storage
 });
 
-export default upload;
+export default uploadNotes;
