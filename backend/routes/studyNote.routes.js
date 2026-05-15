@@ -7,12 +7,19 @@ import {
   getNotesBySubject
 } from "../controllers/studyNote.controller.js";
 
-import upload from "../middleware/upload.middleware.js";
+// import upload from "../middleware/upload.middleware.js";
+import upload from "../middleware/uploadNotes.js";
 
 const router = express.Router();
 
 
 // ADMIN
+// router.post(
+//   "/create",
+//   upload.single("pdf"),
+//   createStudyNote
+// );
+
 router.post(
   "/create",
   upload.single("pdf"),

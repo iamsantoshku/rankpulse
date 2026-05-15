@@ -26,33 +26,116 @@ import StudyNote from "../models/studyNote.model.js";
 // };
 
 
+// export const createStudyNote = async (req, res) => {
+//   try {
+//     const { exam, subject, title } = req.body;
+
+//     const baseUrl =
+//       process.env.BASE_URL ||
+//       "http://localhost:5050";
+
+//     const pdfUrl =
+//       `${baseUrl}/uploads/notes/${req.file.filename}`;
+
+//     const note = await StudyNote.create({
+//       exam,
+//       subject,
+//       title,
+//       pdfUrl
+//     });
+
+//     res.status(201).json({
+//       success: true,
+//       note
+//     });
+
+//   } catch (err) {
+//     res.status(500).json({
+//       success: false,
+//       message: err.message
+//     });
+//   }
+// };
+
+
+// import StudyNote from "../models/studyNote.model.js";
+
+// export const createStudyNote = async (
+//   req,
+//   res
+// ) => {
+//   try {
+
+//     const {
+//       exam,
+//       subject,
+//       title
+//     } = req.body;
+
+//     if (!req.file) {
+//       return res.status(400).json({
+//         success: false,
+//         message: "PDF is required"
+//       });
+//     }
+
+//     // ✅ Cloudinary PDF URL
+//     const pdfUrl = req.file.path;
+
+//     const note =
+//       await StudyNote.create({
+//         exam,
+//         subject,
+//         title,
+//         pdfUrl
+//       });
+
+//     res.status(201).json({
+//       success: true,
+//       note
+//     });
+
+//   } catch (err) {
+
+//     console.log(err);
+
+//     res.status(500).json({
+//       success: false,
+//       message: err.message
+//     });
+//   }
+// };
+
+
 export const createStudyNote = async (req, res) => {
   try {
     const { exam, subject, title } = req.body;
 
-    const baseUrl =
-      process.env.BASE_URL ||
-      "http://localhost:5050";
-
-    const pdfUrl =
-      `${baseUrl}/uploads/notes/${req.file.filename}`;
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        message: "PDF upload failed",
+      });
+    }
 
     const note = await StudyNote.create({
       exam,
       subject,
       title,
-      pdfUrl
+
+      pdfUrl: req.file.path,
     });
 
     res.status(201).json({
       success: true,
-      note
+      note,
     });
-
   } catch (err) {
+    console.log(err);
+
     res.status(500).json({
       success: false,
-      message: err.message
+      message: err.message,
     });
   }
 };

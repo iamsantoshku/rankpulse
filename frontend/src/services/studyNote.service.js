@@ -2,7 +2,20 @@ import API from "../api/axios";
 
 
 // CREATE
-export const createStudyNote = (data) =>
+// export const createStudyNote = (data) =>
+//   API.post(
+//     "/study-notes/create",
+//     data,
+//     {
+//       headers: {
+//         "Content-Type":
+//           "multipart/form-data"
+//       }
+//     }
+//   );
+
+
+  export const createStudyNote = (data) =>
   API.post(
     "/study-notes/create",
     data,
