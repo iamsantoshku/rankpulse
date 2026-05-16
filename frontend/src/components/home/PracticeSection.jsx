@@ -105,7 +105,7 @@ const features = [
     title: "Performance Analytics",
     icon: "📊",
     desc: "AI-powered insights, rank prediction and weak area analysis.",
-    path: "/dashboard",
+    path: "/attempt-analysis",
     color: "from-yellow-500 to-orange-500"
   }
 ];

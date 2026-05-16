@@ -1,39 +1,10 @@
-// import { useEffect, useState } from "react";
-// import { getPYPByExam } from "../../services/test.service";
-// import { useParams } from "react-router-dom";
 
-// const PYPList = () => {
-//   const { examId } = useParams();
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
-
-//   const fetchData = async () => {
-//     const res = await getPYPByExam(examId);
-//     setData(res.data);
-//   };
-
-//   return (
-//     <div className="grid grid-cols-3 gap-4">
-//       {data.map((item) => (
-//         <div key={item._id} className="bg-white p-4 rounded shadow">
-//           <h3>{item.title}</h3>
-//           <p>{item.year}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default PYPList;
 
 
 
 
 import { useEffect, useState } from "react";
-import { getPYPByExam } from "../../services/test.service";
+import {getTestsByPYP} from "../../services/test.service";
 import { useParams } from "react-router-dom";
 
 const PYPList = () => {
@@ -50,7 +21,7 @@ const PYPList = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const res = await getPYPByExam(slug);
+      const res = await getTestsByPYP(slug);
       setData(res.data);
     } catch (err) {
       console.error(err);
@@ -77,13 +48,13 @@ const PYPList = () => {
 
       {data.length > 0 ? (
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
-          {data.map((item) => (
+          {data.map((test) => (
             <div
-              key={item._id}
+              key={test._id}
               className="bg-white p-4 rounded-xl shadow hover:shadow-md transition"
             >
-              <h3 className="font-semibold text-lg">{item.title}</h3>
-              <p className="text-gray-500">{item.year}</p>
+              <h3 className="font-semibold text-lg">{test.title}</h3>
+              <p className="text-gray-500">{test.year}</p>
             </div>
           ))}
         </div>

@@ -10,10 +10,15 @@ import {
   getTestById // ✅ ADD THIS
 } from "../controllers/testPaper.controller.js";
 
+import { protect } from "../middleware/authmiddleware.js";
+import { checkSubscription } from "../middleware/subscription.middleware.js";
+
 const router = express.Router();
 
 // ✅ CREATE TEST
 router.post("/", createTest);
+router.get("/test/:id", protect, checkSubscription, getTestById);
+// router.post("/test-series", createTestSeries);
 
 // ✅ GET SINGLE TEST
 // router.get("/:id", getTestById);

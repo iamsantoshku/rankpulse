@@ -43,8 +43,10 @@ const PYPCard = ({ test }) => {
       <div>
         {test.isFree ? (
           <button
-            onClick={() => navigate(`/start-test/${test._id}`)}
-            className="bg-indigo-700 text-white px-6 py-2 rounded-lg hover:bg-indigo-800"
+            // onClick={() => navigate(`/start-test/${test._id}`)}
+            // className="bg-indigo-700 text-white px-6 py-2 rounded-lg hover:bg-indigo-800"
+            onClick={() => navigate(`/instructions/${test._id}`)}
+            className="bg-green-600 text-white px-6 py-2 rounded-lg"
           >
             Start Now
           </button>
